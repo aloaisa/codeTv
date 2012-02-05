@@ -5,6 +5,13 @@ class VideoFinder {
 	def videoFinder() {}
 	
 	def getVideoLinkById(Integer id) {
-		return "http://vimeo.com/9028476"
+		
+		def link = "http://vimeo.com/9028476"
+		
+		if (id != 1) {
+			link = "http://groovy.org.es/home/story/324"
+		}
+		
+		return link 
 	}
 }
