@@ -22,4 +22,10 @@ class CodeTv_Tests  extends GroovyTestCase {
 		assert new VideoFinder().getVideoLinkById(3) == "http://vimeo.com/11931804" : "Error to Obtain a " +
 				"\"Groovy y la productividad para desarrolladores Java\" Video."
 	}
+	
+	void testReturnAEmptyLinkById_0() {
+		
+		assert new VideoFinder().getVideoLinkById(0) == "" : "Error to Obtain a " +
+				"Video with id 0."
+	}
 }
