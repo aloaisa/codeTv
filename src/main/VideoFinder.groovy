@@ -10,7 +10,7 @@ class VideoFinder {
 	
 	def getVideoLinkById(Integer id) {
 
-		if (id > 0) { 
+		if (linksMap.containsKey(id)) {
 			linksMap[id]
 		} else {
 			""

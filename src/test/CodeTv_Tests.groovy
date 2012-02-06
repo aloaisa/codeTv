@@ -27,6 +27,11 @@ class CodeTv_Tests  extends GroovyTestCase {
 	
 	void testReturnAEmptyLinkByNegativeId() {
 		assert new VideoFinder().getVideoLinkById(-1) == "" : "Error to Obtain a " +
-				"Video with id -1."
+				"Video with id Negative."
+	}
+	
+	void testReturnAEmptyLinkWhenTryToGetAIdThatNotExists() {
+		assert new VideoFinder().getVideoLinkById(78686) == "" : "Error to Obtain a " +
+				"Video with a id that not exist."
 	}
 }
