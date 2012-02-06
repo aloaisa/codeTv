@@ -2,8 +2,7 @@ package main
 
 class VideoFinder {
 
-	def linksMap = [0 : "",
-					1 : "http://vimeo.com/9028476",
+	def linksMap = [1 : "http://vimeo.com/9028476",
 					2 : "http://groovy.org.es/home/story/324",
 					3 : "http://vimeo.com/11931804"]
 	
@@ -11,6 +10,10 @@ class VideoFinder {
 	
 	def getVideoLinkById(Integer id) {
 
-		return linksMap[id] 
+		if (id > 0) { 
+			linksMap[id]
+		} else {
+			""
+		} 
 	}
 }
