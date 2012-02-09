@@ -34,4 +34,9 @@ class CodeTv_Tests  extends GroovyTestCase {
 		assert new VideoFinder().getVideoLinkById(78686) == "" : "Error to Obtain a " +
 				"Video with a id that not exist."
 	}
+	
+	void testReturnAVideoLinkByDescriptionContainsString() {
+		def result = [2 : "http://groovy.org.es/home/story/324"]
+		assertArrayEquals(result, new VideoFinder().getVideoLinkByDescriptionContains()) 
+	}
 }
