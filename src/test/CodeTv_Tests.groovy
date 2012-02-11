@@ -36,34 +36,74 @@ class CodeTv_Tests  extends GroovyTestCase {
 		videoList.addVideo(video2)
 		videoList.addVideo(video3)
 	}
-		
+	
+	
+	/**
+	 * Start Tests
+	 */
+	
     void testReturnAVideoById_1() {
-        assert videoList.findVideoById(1).link == "http://vimeo.com/9028476" : "Error to Obtain a " +
-				"StringCalculator Video on Vimeo."
+		
+		Video video = new Video()
+		video.setId(1)
+		video.setDescription("StringCalculator Groovy")
+		video.setLink("http://vimeo.com/9028476")
+		
+        Video result = videoList.findVideoById(1)
+		
+		assert result.id == video.id
+		assert result.link == video.link
+		assert result.description == video.description
     }
 	
 	void testReturnAVideoById_2() {
-		assert videoList.findVideoById(2).link == "http://groovy.org.es/home/story/324" : "Error to " +
-				"Obtain a \"Seminario de introducción a Groovy\" Video."
+		
+		Video video = new Video()
+		video.setId(2)
+		video.setDescription("Seminario de introducción a Groovy")
+		video.setLink("http://groovy.org.es/home/story/324")
+		
+		Video result = videoList.findVideoById(2)
+		
+		assert result.id == video.id
+		assert result.link == video.link
+		assert result.description == video.description
+		
 	}
 		
 	void testReturnAVideoById_3() {
-		assert videoList.findVideoById(3).link == "http://vimeo.com/11931804" : "Error to Obtain a " +
-				"\"Groovy y la productividad para desarrolladores Java\" Video."
+		
+		Video video = new Video()
+		video.setId(3)
+		video.setDescription("Groovy y la productividad para desarrolladores Java")
+		video.setLink("http://vimeo.com/11931804")
+		
+		Video result = videoList.findVideoById(3)
+		
+		assert result.id == video.id
+		assert result.link == video.link
+		assert result.description == video.description
 	}
 	
 	void testReturnAEmptyLinkById_0() {
-		assert videoList.findVideoById(0) == null : "Error to Obtain a " +
-				"Video with id 0."
+		assert videoList.findVideoById(0) == null
 	}
 	
 	void testReturnAEmptyLinkByNegativeId() {
-		assert videoList.findVideoById(-1) == null : "Error to Obtain a " +
-				"Video with id Negative."
+		assert videoList.findVideoById(-1) == null
 	}
 	
 	void testReturnAEmptyLinkWhenTryToGetAIdThatNotExists() {
-		assert videoList.findVideoById(78686) == null : "Error to Obtain a " +
-				"Video with a id that not exist."
+		assert videoList.findVideoById(78686) == null
+	}
+	
+	void testShouldFailIfAddAExistId() {
+		
+		Video video = new Video()
+		video.setId(1)
+		video.setDescription("Test testShouldFailIfAddAExistId")
+		video.setLink("http://testShouldFailIfAddAExistId")
+		
+		shouldFail videoList.addVideo(video)
 	}
 }

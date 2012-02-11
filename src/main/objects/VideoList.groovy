@@ -1,5 +1,7 @@
 package main.objects
 
+import org.codehaus.groovy.ast.stmt.ThrowStatement;
+
 class VideoList {
 
 	 private static List<Video> videoList = null
@@ -22,7 +24,14 @@ class VideoList {
 	}
 	
 	def static addVideo(Video video) {
-		videoList.add(video)
+		
+		Video findIt = findVideoById(video)
+		
+		if (findIt == null) {
+			videoList.add(video)
+		} else {
+			 throw new Exception("This Id Exists.") 
+		}
 	}
 	
 	def static Video findVideoById(Integer id) {
