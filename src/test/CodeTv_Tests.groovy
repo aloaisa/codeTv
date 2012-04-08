@@ -64,7 +64,7 @@ class SpockTests extends Specification {
 		
 	}
 	
-	def "Return a video example with description == \"StringCalculator Groovy\""() {
+	def "Return a video example with description like == \"StringCalculator\""() {
 		
 		when:
 		List<Video> videoList = videoList.findVideoListByDescriptionLike("StringCalculator Groovy")
@@ -79,6 +79,27 @@ class SpockTests extends Specification {
 		
 		when:
 		List<Video> videoList = videoList.findVideoListByDescriptionLike("Groovy")
+		
+		then:
+		videoList.size() == 3
+		
+		videoList[0].id == 1
+		videoList[0].link == "http://vimeo.com/9028476"
+		videoList[0].description == "StringCalculator Groovy"
+		
+		videoList[1].id == 2
+		videoList[1].link == "http://groovy.org.es/home/story/324"
+		videoList[1].description == "Seminario de introducción a Groovy"
+		
+		videoList[2].id == 3
+		videoList[2].link == "http://vimeo.com/11931804"
+		videoList[2].description == "Groovy y la productividad para desarrolladores Java"
+	}
+	
+	def "Return a video list with description like \"groovy\" independient of Lowercase or UpperCase"() {
+		
+		when:
+		List<Video> videoList = videoList.findVideoListByDescriptionLike("groovy")
 		
 		then:
 		videoList.size() == 3

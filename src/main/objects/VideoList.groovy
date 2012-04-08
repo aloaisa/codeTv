@@ -67,7 +67,7 @@ class VideoList {
 		List<Video> resultVideoList = new ArrayList<Video>()
 		
 		listOfVideos.each { item ->
-			if (item.description.contains(textToFind)) {
+			if (item.description.toLowerCase().contains(textToFind.toLowerCase())) {
 				resultVideoList.add(item)
 			}
 		}		
