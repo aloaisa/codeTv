@@ -63,11 +63,15 @@ class VideoList {
 		return result
 	}
 	
-	def deleteAllVideos() {
+	def findVideoListByDescriptionLike(String textToFind) {
+		List<Video> resultVideoList = new ArrayList<Video>()
 		
-	}
-	
-	def getVideoLinkByDescriptionContains() {
-		return
+		listOfVideos.each { item ->
+			if (item.description.contains(textToFind)) {
+				resultVideoList.add(item)
+			}
+		}		
+		
+		return resultVideoList
 	}
 }
