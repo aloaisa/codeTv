@@ -8,31 +8,28 @@ class VideoList {
 	private List<Video> listOfVideos
 	
 	public static VideoList getInstance() {
-		if (INSTANCE == null) {
-			INSTANCE = new VideoList()
-		}
-		return INSTANCE
-	 }
-
+		INSTANCE ?: new VideoList()
+	}
+	
 	protected VideoList() {
 	
-		listOfVideos = new ArrayList<Video>()
+		listOfVideos = []
 		
 		// Initialize Videos
 		Video video1 = new Video()
-		video1.setId(1)
-		video1.setDescription("StringCalculator Groovy")
-		video1.setLink("http://vimeo.com/9028476")
+		video1.id = 1
+		video1.description = 'StringCalculator Groovy'
+		video1.link = 'http://vimeo.com/9028476'
 			
 		Video video2 = new Video()
-		video2.setId(2)
-		video2.setDescription("Seminario de introducción a Groovy")
-		video2.setLink("http://groovy.org.es/home/story/324")
+		video2.id = 2
+		video2.description = 'Seminario de introducción a Groovy'
+		video2.link = 'http://groovy.org.es/home/story/324'
 			
 		Video video3 = new Video()
-		video3.setId(3)
-		video3.setDescription("Groovy y la productividad para desarrolladores Java")
-		video3.setLink("http://vimeo.com/11931804")
+		video3.id = 3
+		video3.description = 'Groovy y la productividad para desarrolladores Java'
+		video3.link = 'http://vimeo.com/11931804'
 			
 		addVideo(video1)
 		addVideo(video2)
@@ -43,9 +40,9 @@ class VideoList {
 	def addVideo(Video video) {
 		
 		Video findIt = findVideoById(video.getId())
-		
+
 		if (findIt == null) {
-			listOfVideos.add(video)
+			listOfVideos << video
 		} else {
 			 throw new Exception("This Id Exists.") 
 		}
