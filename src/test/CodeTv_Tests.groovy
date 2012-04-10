@@ -4,6 +4,7 @@ import spock.lang.*
 
 import main.objects.VideoList
 import main.objects.Video
+import main.objects.exceptions.VideoNotFinderException
 
 class SpockTests extends Specification {
 
@@ -115,5 +116,19 @@ class SpockTests extends Specification {
 		videoList[2].id == 3
 		videoList[2].link == "http://vimeo.com/11931804"
 		videoList[2].description == "Groovy y la productividad para desarrolladores Java"
+	}
+	
+	def "Return exception if add a video that exist id"() {
+		given: 
+		Video video = new Video()
+		video.id = 1
+		video.description = 'Test Exception'
+		video.link = 'http://test.com'
+ 
+		when:
+		videoList.addVideo(video)
+		
+		then:
+		def exception = thrown(VideoNotFinderException)
 	}
 }

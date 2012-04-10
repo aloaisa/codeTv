@@ -1,5 +1,7 @@
 package main.objects
 
+import main.objects.exceptions.VideoNotFinderException;
+
 import org.codehaus.groovy.ast.stmt.ThrowStatement;
 
 class VideoList {
@@ -44,7 +46,7 @@ class VideoList {
 		if (findIt == null) {
 			listOfVideos << video
 		} else {
-			 throw new Exception("This Id Exists.") 
+			 throw new VideoNotFinderException("This Id Exists.") 
 		}
 	}
 	
